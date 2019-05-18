@@ -63,7 +63,8 @@ func update_TopStatusBar(g *gocui.Gui) {
 
 func update_PacketList(g *gocui.Gui) {
   if first {
-    _, err := g.SetCurrentView("PacketList")
+    //_, err := g.SetCurrentView("PacketList")
+    err := g.SetCurrentView("PacketList")
     if err != nil {
       log.Panicln(err)
     }

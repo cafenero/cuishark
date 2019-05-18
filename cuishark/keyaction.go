@@ -33,7 +33,8 @@ func getpane_PacketByte(g *gocui.Gui) (*gocui.View) {
 func nextView(g *gocui.Gui, v *gocui.View) error {
   nextIndex := (active + 1) % len(viewArr)
   name := viewArr[nextIndex]
-  if _, err := g.SetCurrentView(name); err != nil {
+//  if _, err := g.SetCurrentView(name); err != nil {
+  if err := g.SetCurrentView(name); err != nil {
     return err
   }
 

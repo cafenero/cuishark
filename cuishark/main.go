@@ -16,16 +16,17 @@ func back() {
 
 
 func main() {
-  g, err := gocui.NewGui(gocui.OutputNormal)
-  if err != nil {
-    log.Panicln(err)
-  }
+	g := gocui.NewGui()
+  // g, err := gocui.NewGui(gocui.OutputNormal)
+  // if err != nil {
+  //   log.Panicln(err)
+  // }
   defer g.Close()
 
   g.Cursor = true
-  g.Highlight = true
+//  g.Highlight = true
   g.SelFgColor = gocui.ColorGreen
-  g.SetManagerFunc(layout)
+//  g.SetManagerFunc(layout)
 
   set_keybind(g, "", gocui.KeyCtrlA, gocui.ModNone, switch_auto_scroll)
   set_keybind(g, "PacketList", 'g', gocui.ModNone, page_top)
@@ -105,7 +106,7 @@ func frontend_loop(g *gocui.Gui) {
         }
       }
 
-      g.Update(func(g *gocui.Gui) error { return nil })
+//      g.Update(func(g *gocui.Gui) error { return nil })
     }
   }
   print("finish\n")
@@ -174,7 +175,9 @@ func openclose_detail_pane(g *gocui.Gui, v *gocui.View) error {
 }
 
 func enterCmdMode(g *gocui.Gui, v *gocui.View) error {
-  view, err := g.SetCurrentView("CommandBar")
+  //view, err := g.SetCurrentView("CommandBar")
+  err := g.SetCurrentView("CommandBar")
+  view, _ := g.View("CommandBar")
   if err != nil {
     log.Panicln(err)
   }
